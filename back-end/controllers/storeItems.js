@@ -19,5 +19,10 @@ storeItems.delete('/:id', (req, res) => {
   res.send('delete one item route');
 });
 
+//edit one item
+storeItems.put('/:id/edit', (req, res) => {
+  res.send('edit one item route');
+});
+
 // export
 module.exports = storeItems;
