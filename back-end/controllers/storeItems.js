@@ -14,5 +14,10 @@ storeItems.get('/:id', (req, res) => {
   res.send('get one item route');
 });
 
+//delete one item
+storeItems.delete('/:id', (req, res) => {
+  res.send('delete one item route');
+});
+
 // export
 module.exports = storeItems;
