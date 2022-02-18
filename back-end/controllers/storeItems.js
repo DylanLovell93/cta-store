@@ -9,5 +9,10 @@ storeItems.get('/', (req, res) => {
   res.send('get all items route');
 });
 
+//get one item
+storeItems.get('/:id', (req, res) => {
+  res.send('get one item route');
+});
+
 // export
 module.exports = storeItems;
