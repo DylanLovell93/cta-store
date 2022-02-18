@@ -9,6 +9,11 @@ storeItems.get('/', (req, res) => {
   res.send('get all items route');
 });
 
+//add new item
+storeItems.post('/', (req, res) => {
+  res.send('add new item route');
+});
+
 //get one item
 storeItems.get('/:id', (req, res) => {
   res.send('get one item route');
