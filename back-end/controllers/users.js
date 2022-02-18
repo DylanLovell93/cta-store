@@ -12,8 +12,9 @@ users.post('/', (req, res) => {
 });
 
 //user login route
-users.get('/', (req, res) => {
+users.get('/login', (req, res) => {
   res.send('user login route');
 });
 
-module.exports = { users };
+//export
+module.exports = users;
