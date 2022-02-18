@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS cta_dev;
 CREATE DATABASE cta_dev;
 
 \c cta_dev;
+-- idk
 
 DROP TABLE IF EXISTS test;
 
