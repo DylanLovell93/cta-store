@@ -8,3 +8,10 @@ INSERT INTO test (name) VALUES
 ('Friday'),
 ('Saturday'),
 ('Sunday');
+
+INSERT INTO users (username, password, authkey) VALUES
+(
+    'jenny',
+    '123',
+    'abcdefg'
+);
