@@ -1,9 +1,9 @@
 //import db
 const db = require('../db/dbConfig');
 
-const getUser = ({ username }) => {
+const getUser = async (username) => {
   try {
-    const user = db.one(
+    const user = await db.one(
       'SELECT * FROM users WHERE username=$1',
       username.toLowerCase()
     );
@@ -13,4 +13,17 @@ const getUser = ({ username }) => {
   }
 };
 
-module.exports = { getUser };
+const newUser = async ({ username, password }) => {
+  const userArr = [username, password];
+  try {
+    const user = await db.one(
+      'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *',
+      userArr
+    );
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = { getUser, newUser };
