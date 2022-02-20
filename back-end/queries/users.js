@@ -31,4 +31,15 @@ const newUser = async ({ username, password }) => {
   }
 };
 
-module.exports = { getUser, newUser };
+const deleteUser = async (authkey) => {
+  try {
+    const deletedUser = await db.one(
+      'DELETE FROM users WHERE authkey=$1 RETURNING *',
+      authkey
+    );
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = { getUser, newUser, deleteUser };

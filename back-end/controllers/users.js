@@ -12,7 +12,7 @@ const { getUser, newUser } = require('../queries/users');
 
 //routes
 
-//new user route
+//new user route (Create)
 users.post('/', async (req, res) => {
   const { username, password } = req.body;
   const hashword = await bcrypt.hash(password, 10);
@@ -25,7 +25,7 @@ users.post('/', async (req, res) => {
   }
 });
 
-//user login route
+//user login route (Read)
 users.get('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
