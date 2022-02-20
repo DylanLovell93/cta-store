@@ -9,9 +9,8 @@ INSERT INTO test (name) VALUES
 ('Saturday'),
 ('Sunday');
 
-INSERT INTO users (username, password, authkey) VALUES
+INSERT INTO users (username, password) VALUES
 (
     'jenny',
-    '123',
-    'abcdefg'
+    '123'
 );

@@ -9,12 +9,16 @@ const getUser = async (username) => {
     );
     return user;
   } catch (error) {
-    throw error;
+    if (error.code === 0) {
+      throw 'User not found';
+    } else {
+      throw error;
+    }
   }
 };
 
 const newUser = async ({ username, password }) => {
-  const userArr = [username, password];
+  const userArr = [username.toLowerCase(), password];
   try {
     const user = await db.one(
       'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *',
@@ -22,6 +26,7 @@ const newUser = async ({ username, password }) => {
     );
     return user;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };

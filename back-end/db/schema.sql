@@ -15,5 +15,5 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username TEXT NOT NULL,
     password TEXT NOT NULL,
-    authkey TEXT
+    authkey uuid DEFAULT gen_random_uuid()
     );
