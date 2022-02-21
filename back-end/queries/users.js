@@ -37,6 +37,7 @@ const deleteUser = async (authkey) => {
       'DELETE FROM users WHERE authkey=$1 RETURNING *',
       authkey
     );
+    return deletedUser;
   } catch (error) {
     throw error;
   }
