@@ -9,7 +9,7 @@ GET http://localhost:3333/users/login/
 Content-Type: application/json
 
 {
-    "username": "testing12",
+    "username": "Jake",
     "password": "123"
 }
 
@@ -20,16 +20,28 @@ POST http://localhost:3333/users/
 Content-Type: application/json
 
 {
-    "username": "testing12",
+    "username": "Jake",
     "password": "123"
-} 
+}
 
 ###
 
 //delete user route
-DELETE http://localhost:3333/users
+DELETE http://localhost:3333/users/
 Content-Type: application/json
 
 {
-    "authkey": "3595d563-083d-4b41-b616-8cb5a63b1ee9"
+    "authkey": "4c5fb08b-021d-4eab-b8c2-1764f05cf870" 
+}
+
+###
+
+//edit user route
+PUT http://localhost:3333/users/
+Content-Type: application/json
+
+{
+    "authkey" : "6370e748-1731-4b7c-87c8-380fd462b4d5",
+    "username": "Jake",
+    "password": "idklol"
 }

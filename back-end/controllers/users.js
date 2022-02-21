@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 const users = express.Router();
 
 //import queries
-const { getUser, newUser, deleteUser } = require('../queries/users');
+const { getUser, newUser, deleteUser, editUser } = require('../queries/users');
 
 //routes
 
@@ -36,6 +36,20 @@ users.get('/login', async (req, res) => {
       : res.status(500).json({ success: false, payload: 'Invalid password' });
   } catch (error) {
     res.status(500).json({ success: false, payload: error });
+  }
+});
+
+//edit user route (Update)
+users.put('/', async (req, res) => {
+  const { authkey, username, password } = req.body;
+  const hashword = password ? await bcrypt.hash(password, 10) : null;
+  const userInfo = { username: username.toLowerCase(), password: hashword };
+  try {
+    const editedUser = await editUser(authkey, userInfo);
+    res.status(200).json({ success: true, payload: editedUser });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, payload: 'error' });
   }
 });
 

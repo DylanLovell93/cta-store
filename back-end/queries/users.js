@@ -48,16 +48,17 @@ const editUser = async (authkey, { username, password }) => {
     'SELECT * FROM users WHERE username=$1',
     username
   )[0];
-  const queryArr = [username, password || nameQuery.password, authkey];
-  const validName = nameQuery.authkey === authkey || !nameQuery ? true : false;
+  const queryArr = [username, password || nameQuery?.password, authkey];
+  const validName = nameQuery?.authkey === authkey || !nameQuery ? true : false;
   try {
     return validName
-      ? (editedUser = db.one(
-          'UPDATE users SET username=$1, password=$2 WHERE authkey=$3',
+      ? await db.one(
+          'UPDATE users SET username=$1, password=$2 WHERE authkey=$3 RETURNING *',
           queryArr
-        ))
+        )
       : 'Name is taken';
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };
