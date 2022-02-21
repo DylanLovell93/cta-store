@@ -43,4 +43,6 @@ const deleteUser = async (authkey) => {
   }
 };
 
-module.exports = { getUser, newUser, deleteUser };
+const editUser = async (authkey, { username, password }) => {};
+
+module.exports = { getUser, newUser, deleteUser, editUser };
