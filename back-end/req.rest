@@ -1,0 +1,35 @@
+//BASEURL=http://localhost:3333
+// GET Request to home route
+GET http://localhost:3333
+
+###
+
+//login route
+GET http://localhost:3333/users/login/
+Content-Type: application/json
+
+{
+    "username": "testing12",
+    "password": "123"
+}
+
+###
+
+//new user route
+POST http://localhost:3333/users/
+Content-Type: application/json
+
+{
+    "username": "testing12",
+    "password": "123"
+} 
+
+###
+
+//delete user route
+DELETE http://localhost:3333/users
+Content-Type: application/json
+
+{
+    "authkey": "3595d563-083d-4b41-b616-8cb5a63b1ee9"
+}
