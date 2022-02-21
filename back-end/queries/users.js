@@ -43,6 +43,23 @@ const deleteUser = async (authkey) => {
   }
 };
 
-const editUser = async (authkey, { username, password }) => {};
+const editUser = async (authkey, { username, password }) => {
+  const nameQuery = await db.any(
+    'SELECT * FROM users WHERE username=$1',
+    username
+  )[0];
+  const queryArr = [username, password || nameQuery.password, authkey];
+  const validName = nameQuery.authkey === authkey || !nameQuery ? true : false;
+  try {
+    return validName
+      ? (editedUser = db.one(
+          'UPDATE users SET username=$1, password=$2 WHERE authkey=$3',
+          queryArr
+        ))
+      : 'Name is taken';
+  } catch (error) {
+    throw error;
+  }
+};
 
 module.exports = { getUser, newUser, deleteUser, editUser };
