@@ -35,7 +35,6 @@ const newUser = async ({ username, password }) => {
     );
     return user;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };

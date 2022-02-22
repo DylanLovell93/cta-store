@@ -11,9 +11,12 @@ CREATE TABLE test (
     name TEXT
 );
 
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username TEXT NOT NULL,
     password TEXT NOT NULL,
+    admin BOOLEAN DEFAULT false,
     authkey uuid DEFAULT gen_random_uuid()
     );
