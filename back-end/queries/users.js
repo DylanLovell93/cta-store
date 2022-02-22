@@ -17,6 +17,15 @@ const getUser = async (username) => {
   }
 };
 
+const getUserByAuth = async (authkey) => {
+  try {
+    const user = await db.one('SELECT * FROM users WHERE authkey=$1', authkey);
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const newUser = async ({ username, password }) => {
   const userArr = [username.toLowerCase(), password];
   try {
@@ -63,4 +72,4 @@ const editUser = async (authkey, { username, password }) => {
   }
 };
 
-module.exports = { getUser, newUser, deleteUser, editUser };
+module.exports = { getUser, getUserByAuth, newUser, deleteUser, editUser };
