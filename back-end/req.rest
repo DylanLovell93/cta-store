@@ -9,8 +9,8 @@ GET http://localhost:3333/users/login/
 Content-Type: application/json
 
 {
-    "username": "Jake",
-    "password": "123"
+    "username": "admin",
+    "password": "admin"
 }
 
 ###
@@ -20,8 +20,8 @@ POST http://localhost:3333/users/
 Content-Type: application/json
 
 {
-    "username": "Jake",
-    "password": "123"
+    "username": "admin",
+    "password": "admin"
 }
 
 ###
@@ -42,6 +42,6 @@ Content-Type: application/json
 
 {
     "authkey" : "6370e748-1731-4b7c-87c8-380fd462b4d5",
-    "username": "Jake",
-    "password": "idklol"
+    "username": "Jake234",
+    "password": "idk233"
 }

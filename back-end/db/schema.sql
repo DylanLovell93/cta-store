@@ -20,3 +20,13 @@ CREATE TABLE users (
     admin BOOLEAN DEFAULT false,
     authkey uuid DEFAULT gen_random_uuid()
     );
+
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    image TEXT,
+    description TEXT NOT NULL,
+    price INT,
+    rating INT CHECK (rating >= 0 AND rating <= 5),
+    featured BOOLEAN
+);

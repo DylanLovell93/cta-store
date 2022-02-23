@@ -8,7 +8,13 @@ const bcrypt = require('bcrypt');
 const users = express.Router();
 
 //import queries
-const { getUser, newUser, deleteUser, editUser } = require('../queries/users');
+const {
+  getUser,
+  newUser,
+  deleteUser,
+  editUser,
+  getUserByAuth,
+} = require('../queries/users');
 
 //routes
 
@@ -32,7 +38,7 @@ users.get('/login', async (req, res) => {
     const targetUser = await getUser(username);
     const { authkey } = targetUser;
     (await bcrypt.compare(password, targetUser.password))
-      ? res.status(200).json({ success: true, payload: { authkey } })
+      ? res.status(200).json({ success: true, payload: { username, authkey } })
       : res.status(500).json({ success: false, payload: 'Invalid password' });
   } catch (error) {
     res.status(500).json({ success: false, payload: error });
@@ -66,6 +72,18 @@ users.delete('/', async (req, res) => {
     error.code === '22P02'
       ? res.status(500).json({ success: false, payload: `Invalid Auth` })
       : res.status(500).json({ success: false, payload: 'User not found' });
+  }
+});
+
+//fetch user route
+users.get('/fetch', async (req, res) => {
+  const { authkey } = req.body;
+  try {
+    const user = await getUserByAuth(authkey);
+    const { username, authkey } = user;
+    res.status(200).json({ success: true, payload: { username, authkey } });
+  } catch (error) {
+    res.status(500).json({ success: false, payload: 'error' });
   }
 });
 

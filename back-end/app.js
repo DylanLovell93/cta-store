@@ -2,7 +2,7 @@
 const cors = require('cors');
 const express = require('express');
 const users = require('./controllers/users');
-const storeItems = require('./controllers/storeItems');
+const products = require('./controllers/products');
 
 // CONFIGURATION
 const app = express();
@@ -15,7 +15,7 @@ app.use(express.json()); // Parse incoming JSON
 app.use('/users', users);
 
 //admin controller
-app.use('/items', storeItems);
+app.use('/products', products);
 
 // ROUTES
 app.get('/', (req, res) => {
