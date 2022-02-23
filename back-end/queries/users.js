@@ -17,6 +17,15 @@ const getUser = async (username) => {
   }
 };
 
+const getUserByAuth = async (authkey) => {
+  try {
+    const user = await db.one('SELECT * FROM users WHERE authkey=$1', authkey);
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const newUser = async ({ username, password }) => {
   const userArr = [username.toLowerCase(), password];
   try {
@@ -26,7 +35,6 @@ const newUser = async ({ username, password }) => {
     );
     return user;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };
@@ -43,6 +51,24 @@ const deleteUser = async (authkey) => {
   }
 };
 
-const editUser = async (authkey, { username, password }) => {};
+const editUser = async (authkey, { username, password }) => {
+  const nameQuery = await db.any(
+    'SELECT * FROM users WHERE username=$1',
+    username
+  )[0];
+  const queryArr = [username, password || nameQuery?.password, authkey];
+  const validName = nameQuery?.authkey === authkey || !nameQuery ? true : false;
+  try {
+    return validName
+      ? await db.one(
+          'UPDATE users SET username=$1, password=$2 WHERE authkey=$3 RETURNING *',
+          queryArr
+        )
+      : 'Name is taken';
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
 
-module.exports = { getUser, newUser, deleteUser, editUser };
+module.exports = { getUser, getUserByAuth, newUser, deleteUser, editUser };
