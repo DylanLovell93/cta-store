@@ -63,10 +63,10 @@ products.delete('/:id', async (req, res) => {
       const deletedProduct = await deleteProduct(id);
       res.status(200).json({ success: true, payload: deletedProduct });
     } else {
-      res.status(500).json({ success: false, payload: 'Unauthorized' });
+      res.status(400).json({ success: false, payload: 'Unauthorized' });
     }
   } catch (error) {
-    res.status(500).json({ success: false, payload: 'error' });
+    res.status(500).json({ success: false, payload: error });
   }
 });
 

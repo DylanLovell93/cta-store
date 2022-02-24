@@ -1,0 +1,35 @@
+.ShopGrid {
+  min-height: calc(100vh - 80px);
+  width: 100vw;
+  background-image: url('https://www.komar.de/en/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/3/2/323-dv3_nyc_black_and_white_ma.jpg');
+  background-color: grey;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.ShopGrid .container {
+  padding: 10px;
+  background-color: rgba(112, 112, 112, 0.7);
+  width: 90%;
+  border-radius: 10px;
+  border: 2px solid black;
+  text-align: center;
+  margin: 0px auto;
+}
+
+.ShopGrid .gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+}
+
+.ShopGrid .container h1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ShopGrid .newProd {
+  justify-self: flex-end;
+}

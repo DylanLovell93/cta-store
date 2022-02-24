@@ -1,30 +1,29 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-const API = process.env.REACT_APP_API_URL;
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Pages/Home/Home';
+import Login from './Pages/Login/Login';
+import Signup from './Pages/Signup/Signup';
+import Index from './Pages/Index/Index';
+import NewProd from './Pages/NewProd/NewProd';
+import ShowProd from './Pages/ShowProd/ShowProd';
+import EditProd from './Pages/EditProd/EditProd';
+import NotFound from './Pages/NotFound/NotFound';
 
-console.log(API);
-function App() {
-  const [days, setDays] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`${API}/test`)
-      .then(
-        (response) => {
-          setDays(response.data);
-        },
-        (error) => console.log("get", error)
-      )
-      .catch((c) => console.warn("catch", c));
-  }, []);
+const App = () => {
   return (
-    <div>
-      <ul>
-        {days.map((day) => (
-          <li key={day.name}>{day.name}</li>
-        ))}
-      </ul>
+    <div className="App">
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/products" element={<Index />} />
+        <Route path="/products/new" element={<NewProd />} />
+        <Route path="/products/:id" element={<ShowProd />} />
+        <Route path="/products/:id/edit" element={<EditProd />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;

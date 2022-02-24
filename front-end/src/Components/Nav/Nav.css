@@ -1,0 +1,82 @@
+.Nav {
+  height: 80px;
+  background-color: rgb(24, 24, 24);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px;
+}
+.Nav .navIcon {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.Nav .navIcon,
+.Nav .navIcon:visited,
+.Nav .navIcon:active,
+.Nav .navIcon:hover {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.Nav .navList {
+  display: flex;
+  list-style: none;
+  padding-left: 0px;
+  margin: 0px;
+  height: 100%;
+  align-content: center;
+  justify-content: center;
+}
+
+.Nav .navList li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.Nav .navList a,
+.Nav .navList a:visited,
+.Nav .navList a:active,
+.Nav .navList a:hover {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.Nav .navList a:hover {
+  border-bottom: 3px solid white;
+  transition: ease-in 0.1s;
+}
+
+.Nav .navList .logout,
+.Nav .navList .logout:visited,
+.Nav .navList .logout:active,
+.Nav .navList .logout:hover {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.Nav .navList .logout:hover {
+  border-bottom: 3px solid white;
+  transition: ease-in 0.1s;
+  cursor: pointer;
+}

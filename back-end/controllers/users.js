@@ -31,15 +31,15 @@ users.post('/', async (req, res) => {
   }
 });
 
-//user login route (Read)
-users.get('/login', async (req, res) => {
+//user login route (Post)
+users.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
     const targetUser = await getUser(username);
     const { authkey } = targetUser;
     (await bcrypt.compare(password, targetUser.password))
       ? res.status(200).json({ success: true, payload: { username, authkey } })
-      : res.status(500).json({ success: false, payload: 'Invalid password' });
+      : res.status(400).json({ success: false, payload: 'Invalid password' });
   } catch (error) {
     res.status(500).json({ success: false, payload: error });
   }
@@ -76,13 +76,17 @@ users.delete('/', async (req, res) => {
 });
 
 //fetch user route
-users.get('/fetch', async (req, res) => {
+users.post('/fetch', async (req, res) => {
   const { authkey } = req.body;
   try {
     const user = await getUserByAuth(authkey);
-    const { username, authkey } = user;
-    res.status(200).json({ success: true, payload: { username, authkey } });
+    const { username, admin } = user;
+    res.status(200).json({
+      success: true,
+      payload: { username, authkey, admin, loggedIn: true },
+    });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, payload: 'error' });
   }
 });
