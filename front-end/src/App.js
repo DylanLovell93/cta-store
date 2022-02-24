@@ -8,12 +8,14 @@ import NewProd from './Pages/NewProd/NewProd';
 import ShowProd from './Pages/ShowProd/ShowProd';
 import EditProd from './Pages/EditProd/EditProd';
 import NotFound from './Pages/NotFound/NotFound';
+import ShowProfile from './Pages/ShowProfile/ShowProfile';
 
 const App = () => {
   return (
     <div className="App">
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="myprofile" element={<ShowProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Index />} />

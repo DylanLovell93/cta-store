@@ -1,17 +1,17 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import './Nav.css';
 
-const Nav = ({ userState, resetPage }) => {
+const Nav = ({ userState }) => {
   const { loggedIn, authkey, username } = userState;
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     const storage = window.localStorage;
     storage.removeItem('authkey');
     alert("You've successfully been logged out!");
-    navigate('/idk');
-    navigate('/');
+    location.pathname === '/' ? navigate('/products') : navigate('/');
   };
 
   const loginButtons = (

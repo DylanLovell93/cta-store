@@ -1,11 +1,12 @@
 import React from 'react';
-import Nav from '../../Components/Nav/Nav';
-import Footer from '../../Components/Footer/Footer';
-import HomeBody from '../../Components/HomeBody/HomeBody';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Home = () => {
+import Nav from '../../Components/Nav/Nav';
+import Footer from '../../Components/Footer/Footer';
+import ProForm from '../../Components/ProForm.jsx/ProForm';
+
+const ShowProfile = () => {
   const [userState, setUserState] = useState({
     username: '',
     authkey: '',
@@ -33,13 +34,14 @@ const Home = () => {
     };
     checkLogin();
   }, [URL]);
+
   return (
-    <div className="Home">
+    <div className="ShowProfile">
       <Nav userState={userState} />
-      <HomeBody userState={userState} />
+      <ProForm userState={userState} />
       <Footer />
     </div>
   );
 };
 
-export default Home;
+export default ShowProfile;

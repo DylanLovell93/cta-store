@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Nav from '../../Components/Nav/Nav';
+import Footer from '../../Components/Footer/Footer';
+import ErrorPage from '../../Components/ErrorPage/ErrorPage';
 
 const NotFound = () => {
   const [userState, setUserState] = useState({
@@ -30,7 +33,13 @@ const NotFound = () => {
     };
     checkLogin();
   }, [URL]);
-  return <div className="NotFound">NotFound</div>;
+  return (
+    <div className="NotFound">
+      <Nav userState={userState} />
+      <ErrorPage userState={userState} />
+      <Footer />
+    </div>
+  );
 };
 
 export default NotFound;

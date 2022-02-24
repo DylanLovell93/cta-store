@@ -27,7 +27,6 @@ const UserpassForm = ({ newU }) => {
       const storage = window.localStorage;
       storage.setItem('authkey', user.data.payload.authkey);
       const testUser = storage.getItem('user');
-      console.log(testUser);
       navigate('/products/');
     } catch (error) {
       console.log(error);
